@@ -66,18 +66,18 @@ public class PolicyRegistration extends BasePage{
         this.driver = driver;
     }
 
-    public static void fillField (WebElement fieldName, String value) {
-        BasePage basePage = new BasePage();
-        basePage.fillField(fieldName,value);
-    }
-
-    public static void checkFillField(String value, WebElement element) {
-        BasePage basePage = new BasePage();
-        basePage.checkFillField(value, element);
-    }
-
-    public static void checkError(String value, WebElement element) {
-        BasePage basePage = new BasePage();
-        basePage.checkError(value, element);
-    }
+//    public static void fillField (WebElement fieldName, String value) {
+//        BasePage basePage = new BasePage();
+//        basePage.fillField(fieldName,value);
+//    }
+//
+//    public static void checkFillField(String value, WebElement element) {
+//        BasePage basePage = new BasePage();
+//        basePage.checkFillField(value, element);
+//    }
+//
+//    public static void checkError(String value, WebElement element) {
+//        BasePage basePage = new BasePage();
+//        basePage.checkError(value, element);
+//    }
 }

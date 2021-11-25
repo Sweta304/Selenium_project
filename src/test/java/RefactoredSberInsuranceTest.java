@@ -1,5 +1,7 @@
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,10 +20,16 @@ public class RefactoredSberInsuranceTest extends BaseTest {
         TravelInsPage travelInsPage = new TravelInsPage(driver);
         PolicyChoice policyChoice = new PolicyChoice(driver);
         PolicyRegistration policyRegistration = new PolicyRegistration(driver);
+        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
 
+        Actions actions = new Actions(driver);
+        actions.moveToElement(mainPage.cookie, 0, 0);
+        actions.moveByOffset(-50, 5).click().build().perform();
 
+        //mainPage.cookie.click();
         mainPage.region.click();
-        mainPage.cookie.click();
+
+
         mainPage.ins.click();
         mainPage.allInsProgramms.click();
 
@@ -36,7 +44,6 @@ public class RefactoredSberInsuranceTest extends BaseTest {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
 
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
         wait.until(ExpectedConditions.visibilityOf(
                 policyChoice.apply));
 
@@ -48,15 +55,16 @@ public class RefactoredSberInsuranceTest extends BaseTest {
 
         policyRegistration.fillField(policyRegistration.insuredSurname,"Иванов");
         policyRegistration.fillField(policyRegistration.insuredName,"Иван");
-        policyRegistration.fillField(policyRegistration.insuredBirthDate,"03061990");
+        policyRegistration.fillField(policyRegistration.insuredBirthDate,"03.06.1990");
 
-        policyRegistration.insurerNationality.click();
+        //policyRegistration.insurerNationality.click();
 
         //заполняем апплет "Страхователь"
+
         policyRegistration.insurerSurname.click();
         Thread.sleep(1000);
 
-        policyRegistration.fillField(policyRegistration.insurerSurname,String.valueOf("Питров"));
+        policyRegistration.fillField(policyRegistration.insurerSurname,"Питров");
         policyRegistration.fillField(policyRegistration.insurerName,"Питер");
         policyRegistration.fillField(policyRegistration.insurerMidName,"Гриффин");
         policyRegistration.fillField(policyRegistration.insurerBirthDate,"03.06.1980");
