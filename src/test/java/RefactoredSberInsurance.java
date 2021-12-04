@@ -1,5 +1,4 @@
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -8,8 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import pages.*;
+import steps.BaseSteps;
 
-public class RefactoredSberInsuranceTest extends BaseTest {
+public class RefactoredSberInsurance extends BaseSteps {
 
     @Test
     public void testInsurance() throws Exception {
@@ -22,11 +22,11 @@ public class RefactoredSberInsuranceTest extends BaseTest {
         PolicyRegistration policyRegistration = new PolicyRegistration(driver);
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
 
+        //замена шага mainPage.cookie.click(); из-за наложения кнопок, нажатие по координатам
         Actions actions = new Actions(driver);
         actions.moveToElement(mainPage.cookie, 0, 0);
         actions.moveByOffset(-50, 5).click().build().perform();
 
-        //mainPage.cookie.click();
         mainPage.region.click();
 
 

@@ -13,7 +13,7 @@ public class MainPage extends BasePage{
     public static WebElement cookie;
 
     @FindBy(xpath="//*[contains(@aria-label,'Страхование')]")
-    public static WebElement ins;//сделать отдельный локатор для меню?
+    public static WebElement ins;
 
     @FindBy(xpath="//*[contains(text(),'Все страховые программы')]")
     public static WebElement allInsProgramms;
