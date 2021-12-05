@@ -1,3 +1,4 @@
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import steps.*;
 
@@ -14,6 +15,7 @@ public class SberInsForAllureReportTest extends BaseSteps {
 
     HashMap<String, String> testData = new HashMap<>();
 
+    @DisplayName("Страхование путешественников")
     @Test
     public void Test(){
         testData.put("Фамилия застрахованного","Гриффин");
