@@ -9,7 +9,9 @@ public class BasePage {
     WebDriver driver;
 
     public void fillField(WebElement element, String value) {
+        element.click();
         element.clear();
+        element.click();
         element.sendKeys(value);
     }
 

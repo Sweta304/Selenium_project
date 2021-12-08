@@ -1,11 +1,11 @@
 package steps;
 
+
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.qameta.allure.Attachment;
-import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import util.TestProperties;
 
 import java.util.Properties;
@@ -15,19 +15,18 @@ import static org.junit.Assert.assertEquals;
 
 public class BaseSteps {
 
-    Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);
     protected static WebDriver driver;
-    protected static String baseUrl;
     public static Properties properties = TestProperties.getInstance().getProperties();
 
     public static WebDriver getDriver() {
         return driver;
     }
 
-    @BeforeClass
+    @Before
     public static void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", properties.getProperty("webdriver.chrome.driver"));
         driver = new ChromeDriver();
+        
         driver.get("http://www.sberbank.ru/ru/person");
         //ожидание 30 секунд
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -35,7 +34,7 @@ public class BaseSteps {
         driver.manage().window().maximize();
     }
 
-    @AfterClass
+    @After
     public static void tearDown() throws Exception {
         //закрыть браузер
         driver.quit();

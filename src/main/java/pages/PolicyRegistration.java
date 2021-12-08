@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import steps.BaseSteps;
 
 
 public class PolicyRegistration extends BasePage {
@@ -62,9 +63,8 @@ public class PolicyRegistration extends BasePage {
     @FindBy(xpath = "//div[contains(@role,'alert-form')]")
     public static WebElement errorAssert;
 
-    public PolicyRegistration(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
+    public PolicyRegistration() {
+        PageFactory.initElements(BaseSteps.getDriver(), this);
     }
 
     public void fillField(String fieldName, String value) {
